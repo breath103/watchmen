@@ -1,38 +1,40 @@
 import React, { Component } from 'react';
-import { NICE, SUPER_NICE } from './colors';
+import Site from './site';
 
-class Counter extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { counter: 0 };
-    this.interval = setInterval(() => this.tick(), 1000);
-  }
-
-  tick() {
-    this.setState({
-      counter: this.state.counter + this.props.increment
-    });
-  }
-
-  componentWillUnmount() {
-    clearInterval(this.interval);
-  }
-
-  render() {
-    return (
-      <h1 style={{ color: this.props.color }}>
-        Counter ({this.props.increment}): {this.state.counter}
-      </h1>
-    );
-  }
-}
+import styles from './app.css';
+import _ from 'underscore';
 
 export class App extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      sites: {
+        'naver' : {visible: true},
+        'daum'  : {visible: true},
+        'nate'  : {visible: true},
+        'zum'   : {visible: true},
+      }
+    };
+  }
+
+  componentDidMount() {
+  }
+
   render() {
+    const sites = _.map(this.state.sites, (site, siteId) => {
+      return <Site siteId={siteId} at={this.props.params.at}/>
+    });
     return (
       <div>
-        <Counter increment={1} color={NICE} />
-        <Counter increment={5} color={SUPER_NICE} />
+        <h1>
+          {this.props.params.at} / { JSON.stringify(this.props.location.query) }
+        </h1>
+        <div>
+          { sites }
+        </div>
+        <div>
+          <h1>Timeline</h1>
+        </div>
       </div>
     );
   }
