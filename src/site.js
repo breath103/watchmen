@@ -30,10 +30,13 @@ class Site extends Component {
         <h1>
           {this.props.siteId}
         </h1>
+        <a href={url}>
+          Download
+        </a>
         <div>
           <span style={{display: (this.state.loading ? 'block' : 'none')}}>Loading...</span>
           <IFrame style={{
-                    height: '600px',
+                    height: '300px',
                     overflow: 'hidden',
                     border: '0px',
                     display: (!this.state.loading ? 'block' : 'none')
