@@ -1,14 +1,28 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { Router, Route, Link, browserHistory, hashHistory, IndexRedirect } from 'react-router'
+
+// Needed for onTouchTap
+// http://stackoverflow.com/a/34015469/988941
+import injectTapEventPlugin from 'react-tap-event-plugin';
+injectTapEventPlugin();
+// ======================================================== //
+
+// material-ui
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+
+// Custom
 import { App } from './app';
 
 render((
-  <Router history={hashHistory}>
-    <Route path='/'>
-      <IndexRedirect to="/2016-5-29-4" />
-      <Route path='/:at' component={App}>
+  <MuiThemeProvider muiTheme={getMuiTheme()}>
+    <Router history={hashHistory}>
+      <Route path='/'>
+        <IndexRedirect to='/2016-6-4-12' />
+        <Route path='/:at' component={App}>
+        </Route>
       </Route>
-    </Route>
-  </Router>
+    </Router>
+  </MuiThemeProvider>
 ), document.getElementById('root'))

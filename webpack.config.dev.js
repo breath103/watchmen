@@ -1,6 +1,5 @@
 var path = require('path');
 var webpack = require('webpack');
-var ExtractTextPlugin = require('extract-text-webpack-plugin');
 
 module.exports = {
   // or devtool: 'eval' to debug issues with compiled output:
@@ -21,7 +20,6 @@ module.exports = {
   plugins: [
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NoErrorsPlugin(),
-    new ExtractTextPlugin('styles.css')
   ],
   module: {
     loaders: [
@@ -31,7 +29,10 @@ module.exports = {
         include: path.join(__dirname, 'src')
       }, {
         test: /\.css$/,
-        loader: ExtractTextPlugin.extract('css?modules&importLoaders=1&localIdentName=[name]__[local]___[hash:base64:5]')
+        loaders: [
+          'style?sourceMap',
+          'css?modules&importLoaders=1&localIdentName=[path]___[name]__[local]___[hash:base64:5]'
+        ]
       }
     ]
   }

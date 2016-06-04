@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import CircularProgress from 'material-ui/CircularProgress';
 import IFrame from './iframe';
 
 class Site extends Component {
@@ -26,31 +27,49 @@ class Site extends Component {
     const timeformat = this.props.at.split('-').join('/');
     const url = `/store/${timeformat}/${this.props.siteId.toLowerCase()}.html`;
     return (
-      <div style={{float: 'left', width: '25%'}}>
-        <h1>
-          {this.props.siteId}
-        </h1>
-        <a href={url}>
-          Download
-        </a>
-        <div>
-          <span style={{display: (this.state.loading ? 'block' : 'none')}}>Loading...</span>
-          <IFrame style={{
-                    height: '300px',
-                    overflow: 'hidden',
-                    border: '0px',
-                    display: (!this.state.loading ? 'block' : 'none')
-                  }}
-                  src={url}
-                  onLoad={this.loadComplete.bind(this)}>
-          </IFrame>
+      <div
+        style={{
+          width: '100%',
+          height: '100%',
+          position: 'relative',
+        }}
+      >
+        <div
+          style={{
+            position: 'absolute',
+            left: 0,
+            top: 0,
+            right: 0,
+            bottom: 0,
+            display: 'flex',
+            'align-items': 'center',
+            'justify-content': 'center',
+          }}
+        >
+          <CircularProgress
+            style={{
+              display: (this.state.loading ? 'block' : 'none')
+            }}
+            size={1.5}
+          />
         </div>
+        <IFrame style={{
+                  width: '100%',
+                  height: '100%',
+                  overflow: 'hidden',
+                  border: '0px',
+                  display: (!this.state.loading ? 'block' : 'none')
+                }}
+                src={url}
+                onLoad={this.loadComplete.bind(this)}>
+        </IFrame>
       </div>
     );
   }
 }
 Site.propTypes = {
   siteId: React.PropTypes.string.isRequired,
+  at: React.PropTypes.string.isRequired,
 };
 
 export default Site;
