@@ -2,11 +2,12 @@ import React, { Component } from 'react';
 import _ from 'underscore';
 
 import AppBar from 'material-ui/AppBar';
+import Timeline from './timeline';
 
-import Site from './site';
 import styles from './app.css';
 import gridStyles from './grid.css';
 
+import Sites from './sites';
 
 export class App extends Component {
   constructor(props) {
@@ -39,40 +40,11 @@ export class App extends Component {
     };
     return (
       <div className={gridStyles['single-fill-container']}>
-        <AppBar title=""/>
-        <div className={[
-          gridStyles['single-fill-item'],
-        ].join(' ')} style={{
-          display: 'flex',
-          position: 'relative',
-        }}>
-          <div
-            style={{
-              position: 'absolute',
-              left: 0,
-              right: 0,
-              bottom: 0,
-              top: 0,
-              'background-color': 'rgba(183, 183, 183, 0.23)',
-              overflow: 'scroll',
-            }}
-          >
-            {_.map(this.state.sites, (site, siteId) => (
-              <div
-                style={{
-                  width: '50%',
-                  height: '50%',
-                  display: 'inline-block',
-                }}
-              >
-                <Site
-                  siteId={siteId}
-                  at={this.props.params.at}
-                />
-              </div>
-            ))}
-          </div>
-        </div>
+        <AppBar title="Watchmen"/>
+
+        <Sites at={this.props.params.at}/>
+
+        <Timeline />
       </div>
     );
   }

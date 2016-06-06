@@ -25,7 +25,7 @@ class Site extends Component {
 
   render() {
     const timeformat = this.props.at.split('-').join('/');
-    const url = `/store/${timeformat}/${this.props.siteId.toLowerCase()}.html`;
+    const url = `http://watchmen-repo.s3-website.ap-northeast-2.amazonaws.com/store/${timeformat}/${this.props.siteId.toLowerCase()}.html`;
     return (
       <div
         style={{

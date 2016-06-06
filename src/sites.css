@@ -1,0 +1,25 @@
+.sitesContainer {
+  display: flex;
+  position: relative;
+}
+
+.sitesInnerContainer {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  top: 0;
+  background-color: rgba(183, 183, 183, 0.23);
+  overflow: scroll;
+
+  padding: 5px;
+}
+
+.site {
+  width: 50%;
+  height: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+
+  padding: 5px;
+}

@@ -19,7 +19,7 @@ render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router history={hashHistory}>
       <Route path='/'>
-        <IndexRedirect to='/2016-6-4-12' />
+        <IndexRedirect to='/2016-06-06-07' />
         <Route path='/:at' component={App}>
         </Route>
       </Route>
