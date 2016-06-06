@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 
 import moment from 'moment';
 
-import styles from './timeline.css';
+import styles from './timeline.scss';
 
 class Timeline extends Component {
   constructor(props) {

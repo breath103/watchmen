@@ -5,7 +5,7 @@ import Site from './site';
 
 import gridStyles from './grid.css';
 
-import styles from './sites.css';
+import styles from './sites.scss';
 
 export class Sites extends Component {
   constructor(props) {

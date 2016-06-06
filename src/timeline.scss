@@ -26,15 +26,15 @@
   text-align: center;
   position: relative;
   color: white;
-}
 
-.timelineHourTick::after {
-  content: '';
-  background-color: #E91E63;
-  display: block;
-  position: absolute;
-  width: 1px;
-  left: calc(50% - 1px);
-  top: 0%;
-  bottom: 0%;
+  &::after {
+    content: '';
+    background-color: #E91E63;
+    display: block;
+    position: absolute;
+    width: 1px;
+    left: calc(50% - 1px);
+    top: 0%;
+    bottom: 0%;
+  }
 }
