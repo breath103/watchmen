@@ -3,7 +3,6 @@
   position: relative;
 }
 
-
 $sitesPadding: 5px;
 
 .sitesInnerContainer {
@@ -12,9 +11,7 @@ $sitesPadding: 5px;
   right: 0;
   bottom: 0;
   top: 0;
-  background-color: rgba(183, 183, 183, 0.23);
   overflow: scroll;
-
   padding: $sitesPadding;
 }
 
@@ -23,6 +20,5 @@ $sitesPadding: 5px;
   height: 100%;
   display: inline-block;
   box-sizing: border-box;
-
   padding: $sitesPadding;
 }

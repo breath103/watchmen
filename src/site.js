@@ -35,6 +35,7 @@ class Site extends Component {
           width: '100%',
           height: '100%',
           position: 'relative',
+          'background-color': 'white',
         }}
       >
         <div
