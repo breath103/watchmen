@@ -44,27 +44,27 @@ class Site extends Component {
             top: 0,
             right: 0,
             bottom: 0,
-            display: 'flex',
+            display: (this.state.loading ? 'flex' : 'none'),
             'align-items': 'center',
             'justify-content': 'center',
           }}
         >
           <CircularProgress
-            style={{
-              display: (this.state.loading ? 'block' : 'none')
-            }}
             size={1.5}
           />
         </div>
-        <IFrame style={{
-                  width: '100%',
-                  height: '100%',
-                  overflow: 'hidden',
-                  border: '0px',
-                  display: (!this.state.loading ? 'block' : 'none')
-                }}
-                src={url}
-                onLoad={this.loadComplete.bind(this)}>
+        <IFrame
+          style={{
+            width: '100%',
+            height: '100%',
+            overflow: 'hidden',
+            border: '0px',
+            display: (!this.state.loading ? 'block' : 'none')
+          }}
+          src={url}
+          onChange={() => this.setState({loading: true})}
+          onLoad={() => this.setState({loading: false})}
+        >
         </IFrame>
       </div>
     );
