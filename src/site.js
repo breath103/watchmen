@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 import IFrame from './iframe';
 
+const S3_URL = 'http://watchmen-repo.s3-website.ap-northeast-2.amazonaws.com/store';
+
 class Site extends Component {
   constructor(props) {
     super(props);
@@ -24,8 +26,9 @@ class Site extends Component {
   }
 
   render() {
-    const timeformat = this.props.at.split('-').join('/');
-    const url = `http://watchmen-repo.s3-website.ap-northeast-2.amazonaws.com/store/${timeformat}/${this.props.siteId.toLowerCase()}.html`;
+    const { at, siteId } = this.props;
+    const timeformat = at.split('-').join('/');
+    const url = `${S3_URL}/${timeformat}/${siteId.toLowerCase()}.html`;
     return (
       <div
         style={{

@@ -15,11 +15,18 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 // Custom
 import { App } from './app';
 
+import moment from 'moment';
+
+function formatTime(date) {
+  return moment(date).utcOffset(0).format('YYYY-MM-DD-HH');
+}
+
 render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router history={hashHistory}>
       <Route path='/'>
-        <IndexRedirect to='/2016-06-06-07' />
+        2016-06-06-07
+        <IndexRedirect to={`/${formatTime(new Date())}`} />
         <Route path='/:at' component={App}>
         </Route>
       </Route>

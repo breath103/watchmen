@@ -40,11 +40,10 @@ export class App extends Component {
     };
     return (
       <div className={gridStyles['single-fill-container']}>
-        <AppBar title="Watchmen"/>
-
+        <AppBar title="Watchmen">
+          
+        </AppBar>
         <Sites at={this.props.params.at}/>
-
-        <Timeline />
       </div>
     );
   }
