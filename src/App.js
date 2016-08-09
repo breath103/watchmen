@@ -8,8 +8,9 @@ import styles from './app.css';
 import gridStyles from './grid.css';
 
 import Sites from './sites';
-import TimeFormatHelper from './timeFormatHelper';
 import moment from 'moment';
+
+import TimeFormatHelper from './timeFormatHelper';
 
 class App extends Component {
   constructor(props) {
@@ -25,22 +26,19 @@ class App extends Component {
   }
 
   get momentAt() {
-    return TimeFormatHelper.parseTime(this.props.params.at);
+    return moment.unix(Number(this.props.params.at) / 1000);
   }
 
   updateParsedAt(options) {
     const date = this.momentAt;
 
-    console.log(options);
-
     if (options.year) date.year(options.year);
     if (options.month) date.month(options.month);
     if (options.date) date.date(options.date);
     if (options.hour) date.hour(options.hour);
+    if (options.minute) date.minute(options.minute);
 
-    console.log(`/${TimeFormatHelper.formatTime(date)}`);
-
-    this.props.router.push(`/${TimeFormatHelper.formatTime(date)}`);
+    this.props.router.push(`/${date.valueOf()}`);
   }
 
   render() {
@@ -90,6 +88,17 @@ class App extends Component {
             onChange={(e) => this.updateParsedAt({hour: e.target.value})}
           />
           <span className={styles.headerInputLabel}>시</span>
+          <input
+            className={styles.headerInput}
+            type="number"
+            value={momentAt.minute()}
+            min="0"
+            max="59"
+            onChange={(e) => this.updateParsedAt({minute: e.target.value})}
+          />
+          <span className={styles.headerInputLabel}>분</span>
+          <small> Actually Crawled At </small>
+          <span>{TimeFormatHelper.formattedTimestampFromAt(momentAt.valueOf())}</span>
         </header>
         <Sites at={params.at}/>
         <footer className={styles.appFooter}>

@@ -14,13 +14,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
 
 // Custom
 import App from './app';
-import TimeFormatHelper from './timeFormatHelper';
 
 render((
   <MuiThemeProvider muiTheme={getMuiTheme()}>
     <Router history={hashHistory}>
       <Route path='/'>
-        <IndexRedirect to={`/${TimeFormatHelper.formatTime(new Date())}`} />
+        <IndexRedirect to={`/${new Date().getTime()}`} />
         <Route path='/:at' component={App}>
         </Route>
       </Route>

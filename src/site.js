@@ -1,8 +1,19 @@
 import React, { Component } from 'react';
 import CircularProgress from 'material-ui/CircularProgress';
 import IFrame from './iframe';
+import moment from 'moment';
 
 const S3_URL = 'http://watchmen-repo.s3-website.ap-northeast-2.amazonaws.com/store';
+
+import TimeFormatHelper from './TimeFormatHelper';
+
+
+function siteUrl(at, siteId) {
+  const formattedTimestamp = TimeFormatHelper.formattedTimestampFromAt(at);
+
+  const url = `${S3_URL}/${formattedTimestamp}/${siteId.toLowerCase()}.html`;
+  return url;
+}
 
 class Site extends Component {
   constructor(props) {
@@ -27,8 +38,7 @@ class Site extends Component {
 
   render() {
     const { at, siteId } = this.props;
-    const timeformat = at.split('-').join('/');
-    const url = `${S3_URL}/${timeformat}/${siteId.toLowerCase()}.html`;
+    const url = siteUrl(at, siteId);
     return (
       <div
         style={{
