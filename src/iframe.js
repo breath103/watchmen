@@ -12,7 +12,7 @@ class IFrame extends Component {
   }
 
   render() {
-    return <iframe ref="iframe" {...this.props}/>;
+    return <iframe sandbox ref="iframe" {...this.props}/>;
   }
 }
 IFrame.propTypes = {

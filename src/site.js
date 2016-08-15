@@ -45,7 +45,7 @@ class Site extends Component {
           width: '100%',
           height: '100%',
           position: 'relative',
-          'background-color': 'white',
+          backgroundColor: 'white',
         }}
       >
         <div
@@ -56,8 +56,8 @@ class Site extends Component {
             right: 0,
             bottom: 0,
             display: (this.state.loading ? 'flex' : 'none'),
-            'align-items': 'center',
-            'justify-content': 'center',
+            alignItems: 'center',
+            justifyContent: 'center',
           }}
         >
           <CircularProgress
